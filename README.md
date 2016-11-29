@@ -39,5 +39,5 @@ inputs that triggered that so you can investigate!
 2. Add a reference to your script to index.js with an appropriate name.
 e.g. encryptRb, encryptPl, encryptPy.
 
-Then ensure it's called in the async while loop and that the result is passed with the others
+   Then ensure it's called in the async while loop and that the result is passed with the others
 to the compare function.
