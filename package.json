@@ -1,0 +1,10 @@
+{
+  "name": "crypt-van-impl",
+  "version": "1.0.0",
+  "description": "A comparison framework for cryptography implementations in various languages",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Joe Kirwin",
+  "license": "MIT"
+}
