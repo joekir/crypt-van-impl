@@ -8,12 +8,15 @@ var ptext,iv,aad,key,res1,res2;
  * returns true if there's a difference
  */
 function compare(...args){
-  var noDiff = true;
+  var parity = true;
 
   for(var i=1; i<args.length; i++){
-    noDiff = (args[i] && args[i-1] == args[i-1])
+    parity = parity && (args[i] && args[i-1] == args[i-1])
+
+    if(parity == false)
+      return true
   }
-  return !noDiff
+  return false
 }
 
 function run(){
