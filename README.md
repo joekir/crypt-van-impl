@@ -23,7 +23,7 @@ inputs that triggered that so you can investigate!
    ```        
    /*
     * This function runs your crypto lib from the shell.
-    * See the file /python/pycrypt.js in this repo for an example.
+    * See the file /python/Cryptography/cryptography.js in this repo for an example.
     */
    function anyNameYouLike(ptext,iv,aad,key){
      ...
