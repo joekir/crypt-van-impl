@@ -1,6 +1,6 @@
 const encryptNd = require('./node/aesgcm.js'),
       crypto = require('crypto');
-      encryptPy = require('./python/pycrypt.js');
+      encryptPy = require('./python/Cryptography/cryptography.js');
 
 var ptext,iv,aad,key,res1,res2;
 

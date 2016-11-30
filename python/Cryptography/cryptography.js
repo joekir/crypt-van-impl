@@ -7,7 +7,7 @@ const exec = require('child_process').exec,
  * func(ptext,iv,aad,key,cb) to return {ctext, tag}
 */
 var run = function(ptext,iv,aad,key,cb){
-  var comd = util.format('%s/python/pycrypt.py %s %s %s %s',cwd
+  var comd = util.format('%s/python/Cryptography/crypt.py %s %s %s %s',cwd
                           ,ptext,iv,aad,key);
 
   exec(comd, (error, stdout, stderr) => {
