@@ -1,4 +1,4 @@
-const encryptNd = require('./node/aesgcm.js'),
+const encryptNd = require('./node/core.js'),
       crypto = require('crypto');
       encryptPy = require('./python/Cryptography/cryptography.js');
 
@@ -20,9 +20,9 @@ function compare(...args){
 }
 
 function run(){
-  ptext = Math.random().toString(36).substr(2, 15);
+  ptext = Math.random().toString(36).substr(2, Math.floor(Math.random()*24+3));
   iv = crypto.randomBytes(12).toString('hex');
-  aad = Math.random().toString(36).substr(2, 15);
+  aad = Math.random().toString(36).substr(2, Math.floor(Math.random()*24+3));
   key = crypto.randomBytes(32).toString('hex');
 
   encryptPy(ptext,iv,aad,key,(res2) => {
