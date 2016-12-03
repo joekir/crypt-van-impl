@@ -1,8 +1,9 @@
 const encryptNd = require('./node/core.js'),
-      crypto = require('crypto');
-      encryptPy = require('./python/Cryptography/cryptography.js');
+      crypto = require('crypto'),
+      encryptPy = require('./python/Cryptography/cryptography.js'),
+      encryptGo = require('./go/gocrypt.js');
 
-var ptext,iv,aad,key,res1,res2;
+var ptext,iv,aad,key,res1,res2,res3;
 
 /* bulk compare for arbitrary amount.
  * returns true if there's a difference
@@ -26,18 +27,21 @@ function run(){
   key = crypto.randomBytes(32).toString('hex');
 
   encryptPy(ptext,iv,aad,key,(res2) => {
-    res1 = encryptNd(ptext,iv,aad,key);
-    if(compare(res1.ctext,res2.ctext) || compare(res1.tag,res2.tag)){
-      console.log("==== DIFF Detected ====");
-      console.log("ptext: %s, iv: %s, aad: %s, key: %s\n"
+    encryptGo(ptext,iv,aad,key, (res3) =>  {
+      res1 = encryptNd(ptext,iv,aad,key);
+      if(compare(res1,res2,res3)) {
+        console.log("==== DIFF Detected ====");
+        console.log("ptext: %s, iv: %s, aad: %s, key: %s\n"
                   ,ptext,iv,aad,key);
-    }
+        console.log("res1:%s,res2:%s,res3:%s",res1,res2,res3)
+      }
 
-    // async while alternative
-    if (i > 1){
-      --i;
-      run()
-    } else{ console.log('done')}
+      // async while alternative
+      if (i > 1){
+        --i;
+        run()
+      } else{ console.log('done')}
+    })
   });
 }
 

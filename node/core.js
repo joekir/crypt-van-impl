@@ -12,10 +12,7 @@ function encrypt(ptext,iv,aad,key){
 
   var tag = cipher.getAuthTag();
 
-  return {
-    ctext: encrypted,
-    tag: tag.toString('hex')
-  };
+  return encrypted + tag.toString('hex');
 }
 
 module.exports = encrypt
