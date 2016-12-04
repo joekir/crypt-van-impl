@@ -25,19 +25,17 @@ inputs that triggered that so you can investigate!
     * This function runs your crypto lib from the shell.
     * See the file /python/Cryptography/cryptography.js in this repo for an example.
     */
-   function anyNameYouLike(ptext,iv,aad,key){
-     ...
-     returns {
-       "ctext" : "<blargh!",
-       "tag"   : "arrgh!!"
-       }
+   function anyNameYouLike(plaintext,iv,additionalAuthenticatedData,key){
+     // ... magic happens ...
+     
+     returns ciphertext+tag // some implementations return them separate others its one combined result.
    }
 
    module.exports = anyNameYouLike     
    ```
 
 2. Add a reference to your script to index.js with an appropriate name.
-e.g. encryptRb, encryptPl, encryptPy.
+e.g. encryptRb, encryptGo, encryptPy.
 
    Then ensure it's called in the async while loop and that the result is passed with the others
 to the compare function.
